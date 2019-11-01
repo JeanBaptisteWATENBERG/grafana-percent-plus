@@ -1,14 +1,14 @@
 {
-  "name": "simple-react-panel",
+  "name": "grafana-percent-plus-panel",
   "version": "1.0.0",
-  "description": "Grafana RSS Panel",
+  "description": "Grafana percent plus Panel",
   "scripts": {
     "build": "grafana-toolkit plugin:build",
     "test": "grafana-toolkit plugin:test",
     "dev": "grafana-toolkit plugin:dev",
     "watch": "grafana-toolkit plugin:dev --watch"
   },
-  "author": "Grafana Labs",
+  "author": "Jean-Baptiste WATENBERG",
   "license": "Apache-2.0",
   "devDependencies": {
     "@grafana/data": "latest",

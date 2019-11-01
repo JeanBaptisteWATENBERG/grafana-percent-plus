@@ -1,21 +1,21 @@
 {
   "type": "panel",
-  "name": "Simple Panel",
-  "id": "myorgid-simple-panel",
+  "name": "Percent+",
+  "id": "jean-baptiste-watenberg-percent-panel",
 
   "info": {
-    "description": "Simple React Panel",
+    "description": "Grafana percent+ stat panel. Simply computes and display percent given two metric",
     "author": {
-      "name": "Your Name"
+      "name": "Jean-Baptiste WATENBERG"
     },
-    "keywords": ["Simple"],
+    "keywords": ["Percent"],
     "logos": {
       "small": "img/logo.svg",
       "large": "img/logo.svg"
     },
     "links": [
-      {"name": "Website", "url": "https://github.com/grafana/simple-react-panel"},
-      {"name": "License", "url": "https://github.com/grafana/simple-react-panel/blob/master/LICENSE"}
+      {"name": "Website", "url": "https://github.com/JeanBaptisteWATENBERG/grafana-percent-stat"},
+      {"name": "License", "url": "https://github.com/JeanBaptisteWATENBERG/grafana-percent-stat/blob/master/LICENSE"}
     ],
     "screenshots": [],
     "version": "%VERSION%",
