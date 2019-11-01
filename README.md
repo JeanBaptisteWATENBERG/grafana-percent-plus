@@ -1,5 +1,7 @@
 # Grafana percent+ stat panel
 
+![Grafana percent plus logo](src/img/logo.svg "Grafana percent plus logo")
+
 Simply computes and display percent given two metric.
 
 Design with heartbeat in minds, it aims to display an availability rate. 
