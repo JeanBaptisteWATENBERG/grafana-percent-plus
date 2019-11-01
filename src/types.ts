@@ -13,12 +13,7 @@ export const defaults: PercentPanelOptions = {
   percentOf: '',
   over: '',
   decimal: -1,
-  thresholds: [
-    { value: -Infinity, color: 'red' },
-    { value: 95, color: 'red' },
-    { value: 99, color: 'orange' },
-    { value: 100, color: 'green' }
-  ],
+  thresholds: [{ value: -Infinity, color: 'red' }, { value: 95, color: 'red' }, { value: 99, color: 'orange' }, { value: 100, color: 'green' }],
   valueFontSize: '80',
-  percentFontSize: '50'
+  percentFontSize: '50',
 };

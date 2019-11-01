@@ -32,7 +32,7 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
   render() {
     const { options, data } = this.props;
 
-    const fieldAliases: SelectableValue<string>[] = data.series
+    const fieldAliases: Array<SelectableValue<string>> = data.series
       .map(serie => {
         return serie.fields
           .filter(field => field.type === 'number')
@@ -44,9 +44,7 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
 
     const decimalOptions = [
       { label: 'No limit', value: -1 },
-      ...Array(7)
-        .fill(undefined)
-        .map((_: undefined, index: number) => ({ label: `${index}`, value: index })),
+      ...[0, 1, 2, 3, 4, 5, 6, 7].map((index: number) => ({ label: `${index}`, value: index })),
     ];
 
     const fontSizeOptions = [20, 30, 50, 70, 80, 100, 110, 120, 150, 170, 200].map(size => ({ label: `${size}%`, value: `${size}` }));
