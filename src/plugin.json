@@ -1,0 +1,31 @@
+{
+  "type": "panel",
+  "name": "Percent+",
+  "id": "JeanBaptisteWATENBERG-percent-panel",
+
+  "info": {
+    "description": "Grafana percent+ stat panel. Simply computes and display percent given two metrics.",
+    "author": {
+      "name": "Jean-Baptiste WATENBERG"
+    },
+    "keywords": ["Percent"],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {"name": "Website", "url": "https://github.com/JeanBaptisteWATENBERG/grafana-percent-stat"},
+      {"name": "License", "url": "https://github.com/JeanBaptisteWATENBERG/grafana-percent-stat/blob/master/LICENSE"}
+    ],
+    "screenshots": [
+      { "name": "Options", "path": "https://raw.githubusercontent.com/JeanBaptisteWATENBERG/grafana-percent-plus/master/docs/configure.png" }
+    ],
+    "version": "1.0.4",
+    "updated": "2019-11-02"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "6.3.x",
+    "plugins": []
+  }
+}
