@@ -7,7 +7,7 @@ But you can give it any metric in input to compute your own percent rate.
 
 ## Install
 
-Download latest release https://github.com/JeanBaptisteWATENBERG/grafana-percent-plus/releases/download/v1.0.3/grafana-percent-plus.zip and unzip it in your grafana plugin folder.
+Download latest release https://github.com/JeanBaptisteWATENBERG/grafana-percent-plus/releases/download/v1.0.4/grafana-percent-plus.zip and unzip it in your grafana plugin folder.
 
 ## Usage
 

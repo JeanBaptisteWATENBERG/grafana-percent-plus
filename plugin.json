@@ -20,7 +20,7 @@
     "screenshots": [
       { "name": "Options", "path": "https://raw.githubusercontent.com/JeanBaptisteWATENBERG/grafana-percent-plus/master/docs/configure.png" }
     ],
-    "version": "1.0.2",
+    "version": "1.0.4",
     "updated": "2019-11-02"
   },
 
