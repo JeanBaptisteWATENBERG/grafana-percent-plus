@@ -15,11 +15,11 @@ But you can give it any metric in input to compute your own percent rate.
 
  2. Use them to display your availability rate
 
-![Configure metrics in plugin panel](docs/query.png "Choose metrics and configure threshold in plugin panel")
+![Configure metrics in plugin panel](docs/configure.png "Choose metrics and configure threshold in plugin panel")
 
 ## Install
 
-Download release and unzip it in your grafana plugin folder.
+Download latest release https://github.com/JeanBaptisteWATENBERG/grafana-percent-plus/releases/download/v1.0.0/grafana-percent-stat.zip and unzip it in your grafana plugin folder.
 
 ## Contibute
 
