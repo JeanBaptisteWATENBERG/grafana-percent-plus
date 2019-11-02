@@ -52,24 +52,24 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
     return (
       <PanelOptionsGrid>
         <PanelOptionsGroup title="Percent plus options">
-          <div className="section max-width gf-form-group">
+          <div className="section gf-form-group" style={{ width: '100%' }}>
             <div className="gf-form">
               <label className="gf-form-label width-9">Percent of</label>
-              <div className="gf-form-select-wrapper max-width-16">
+              <div className="gf-form-select-wrapper" style={{ width: '100%' }}>
                 <Select value={{ label: options.percentOf, value: options.percentOf }} options={fieldAliases} onChange={this.onPercentOfChanged} />
               </div>
             </div>
 
             <div className="gf-form">
               <label className="gf-form-label width-9">Over</label>
-              <div className="gf-form-select-wrapper max-width-16">
+              <div className="gf-form-select-wrapper" style={{ width: '100%' }}>
                 <Select value={{ label: options.over, value: options.over }} options={fieldAliases} onChange={this.onOverChanged} />
               </div>
             </div>
 
             <div className="gf-form">
               <label className="gf-form-label width-9">Decimals</label>
-              <div className="gf-form-select-wrapper max-width-16">
+              <div className="gf-form-select-wrapper" style={{ width: '100%' }}>
                 <Select
                   value={decimalOptions.find(decimal => decimal.value === options.decimal)}
                   options={decimalOptions}
@@ -80,7 +80,7 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
 
             <div className="gf-form">
               <label className="gf-form-label width-9">Value font size</label>
-              <div className="gf-form-select-wrapper max-width-16">
+              <div className="gf-form-select-wrapper" style={{ width: '100%' }}>
                 <Select
                   value={fontSizeOptions.find(size => size.value === options.valueFontSize)}
                   options={fontSizeOptions}
@@ -91,7 +91,7 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
 
             <div className="gf-form">
               <label className="gf-form-label width-9">% font size</label>
-              <div className="gf-form-select-wrapper max-width-16">
+              <div className="gf-form-select-wrapper" style={{ width: '100%' }}>
                 <Select
                   value={fontSizeOptions.find(size => size.value === options.percentFontSize)}
                   options={fontSizeOptions}
