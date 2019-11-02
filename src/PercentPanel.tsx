@@ -37,7 +37,7 @@ export class PercentPanel extends PureComponent<Props> {
 
     const percent = (percentOfSum * 100) / percentOverSum;
 
-    const applyableThreshold = options.thresholds
+    const applyableThreshold = [...options.thresholds]
       .sort((thresholdA, thresholdB) => thresholdB.value - thresholdA.value)
       .find(threshold => threshold.value <= percent) || { color: 'transparent' };
 
