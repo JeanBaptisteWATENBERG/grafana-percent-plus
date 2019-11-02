@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { PanelEditorProps, PanelOptionsGrid, Select, ThresholdsEditor } from '@grafana/ui';
+import { PanelEditorProps, PanelOptionsGrid, Select, ThresholdsEditor, PanelOptionsGroup } from '@grafana/ui';
 
 import { PercentPanelOptions } from './types';
 import { SelectableValue, Threshold } from '@grafana/data';
@@ -51,38 +51,56 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
 
     return (
       <PanelOptionsGrid>
-        <div className="section gf-form-group">
-          <h5 className="section-heading">Percent of</h5>
-          <Select value={{ label: options.percentOf, value: options.percentOf }} options={fieldAliases} onChange={this.onPercentOfChanged} />
-          <br />
+        <PanelOptionsGroup title="Percent plus options">
+          <div className="section max-width gf-form-group">
+            <div className="gf-form">
+              <label className="gf-form-label width-9">Percent of</label>
+              <div className="gf-form-select-wrapper max-width-16">
+                <Select value={{ label: options.percentOf, value: options.percentOf }} options={fieldAliases} onChange={this.onPercentOfChanged} />
+              </div>
+            </div>
 
-          <h5 className="section-heading">Over</h5>
-          <Select value={{ label: options.over, value: options.over }} options={fieldAliases} onChange={this.onOverChanged} />
-          <br />
+            <div className="gf-form">
+              <label className="gf-form-label width-9">Over</label>
+              <div className="gf-form-select-wrapper max-width-16">
+                <Select value={{ label: options.over, value: options.over }} options={fieldAliases} onChange={this.onOverChanged} />
+              </div>
+            </div>
 
-          <h5 className="section-heading">Decimals</h5>
-          <Select
-            value={decimalOptions.find(decimal => decimal.value === options.decimal)}
-            options={decimalOptions}
-            onChange={this.onDecimalChanged}
-          />
-          <br />
+            <div className="gf-form">
+              <label className="gf-form-label width-9">Decimals</label>
+              <div className="gf-form-select-wrapper max-width-16">
+                <Select
+                  value={decimalOptions.find(decimal => decimal.value === options.decimal)}
+                  options={decimalOptions}
+                  onChange={this.onDecimalChanged}
+                />
+              </div>
+            </div>
 
-          <h5 className="section-heading">Value font size</h5>
-          <Select
-            value={fontSizeOptions.find(size => size.value === options.valueFontSize)}
-            options={fontSizeOptions}
-            onChange={this.onValueFontSizeChanged}
-          />
-          <br />
+            <div className="gf-form">
+              <label className="gf-form-label width-9">Value font size</label>
+              <div className="gf-form-select-wrapper max-width-16">
+                <Select
+                  value={fontSizeOptions.find(size => size.value === options.valueFontSize)}
+                  options={fontSizeOptions}
+                  onChange={this.onValueFontSizeChanged}
+                />
+              </div>
+            </div>
 
-          <h5 className="section-heading">% font size</h5>
-          <Select
-            value={fontSizeOptions.find(size => size.value === options.percentFontSize)}
-            options={fontSizeOptions}
-            onChange={this.onPercentFontSizeChanged}
-          />
-        </div>
+            <div className="gf-form">
+              <label className="gf-form-label width-9">% font size</label>
+              <div className="gf-form-select-wrapper max-width-16">
+                <Select
+                  value={fontSizeOptions.find(size => size.value === options.percentFontSize)}
+                  options={fontSizeOptions}
+                  onChange={this.onPercentFontSizeChanged}
+                />
+              </div>
+            </div>
+          </div>
+        </PanelOptionsGroup>
 
         <ThresholdsEditor thresholds={options.thresholds} onChange={this.onThresholdsCHanged} />
       </PanelOptionsGrid>
