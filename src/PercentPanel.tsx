@@ -35,7 +35,7 @@ export class PercentPanel extends PureComponent<Props> {
     const percentOfSum = percentOfField.values.toArray().reduce((sum, current) => sum + current, 0);
     const percentOverSum = percentOverField.values.toArray().reduce((sum, current) => sum + current, 0);
 
-    const percent = (percentOfSum * 100) / percentOverSum;
+    const percent = Math.min((percentOfSum * 100) / percentOverSum, 100);
 
     const applyableThreshold = [...options.thresholds]
       .sort((thresholdA, thresholdB) => thresholdB.value - thresholdA.value)
