@@ -17,7 +17,7 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
     this.props.onOptionsChange({ ...this.props.options, decimal: value === undefined ? -1 : value });
   };
 
-  onThresholdsCHanged = (newThresholds: Threshold[]) => {
+  onThresholdsChanged = (newThresholds: Threshold[]) => {
     this.props.onOptionsChange({ ...this.props.options, thresholds: newThresholds });
   };
 
@@ -102,7 +102,7 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
           </div>
         </PanelOptionsGroup>
 
-        <ThresholdsEditor thresholds={options.thresholds} onChange={this.onThresholdsCHanged} />
+        <ThresholdsEditor thresholds={options.thresholds} onChange={this.onThresholdsChanged} />
       </PanelOptionsGrid>
     );
   }

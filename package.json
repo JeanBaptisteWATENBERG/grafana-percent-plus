@@ -1,6 +1,6 @@
 {
   "name": "grafana-percent-plus-panel",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Grafana percent plus Panel",
   "scripts": {
     "build": "grafana-toolkit plugin:build",

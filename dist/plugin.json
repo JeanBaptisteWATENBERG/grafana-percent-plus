@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "Percent+",
-  "id": "JeanBaptisteWATENBERG-percent-panel",
+  "id": "jeanbaptistewatenberg-percent-panel",
 
   "info": {
     "description": "Grafana percent+ stat panel. Simply computes and display percent given two metrics.",
@@ -20,8 +20,8 @@
     "screenshots": [
       { "name": "Options", "path": "https://raw.githubusercontent.com/JeanBaptisteWATENBERG/grafana-percent-plus/master/docs/configure.png" }
     ],
-    "version": "1.0.5",
-    "updated": "2019-11-15"
+    "version": "1.0.6",
+    "updated": "2019-11-16"
   },
 
   "dependencies": {

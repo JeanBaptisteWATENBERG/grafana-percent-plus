@@ -41,8 +41,6 @@ export class PercentPanel extends PureComponent<Props> {
       .sort((thresholdA, thresholdB) => thresholdB.value - thresholdA.value)
       .find(threshold => threshold.value <= percent) || { color: 'transparent' };
 
-    console.log(options.thresholds, applyableThreshold);
-
     return (
       <div className="singlestat-panel" style={{ background: getColorFromHexRgbOrName(applyableThreshold.color) }}>
         <div className="singlestat-panel-value-container">
