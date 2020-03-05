@@ -1,4 +1,4 @@
-import { PanelPlugin } from '@grafana/ui';
+import { PanelPlugin } from '@grafana/data';
 import { PercentPanelOptions, defaults } from './types';
 import { PercentPanel } from './PercentPanel';
 import { PercentEditor } from './PercentEditor';
