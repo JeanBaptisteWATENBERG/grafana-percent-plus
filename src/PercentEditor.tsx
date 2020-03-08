@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import { PanelEditorProps, PanelOptionsGrid, Select, ThresholdsEditor, PanelOptionsGroup } from '@grafana/ui';
+import React, { PureComponent, ChangeEvent } from 'react';
+import { PanelOptionsGrid, Select, ThresholdsEditor, PanelOptionsGroup, ThemeContext, Input } from '@grafana/ui';
 
 import { PercentPanelOptions } from './types';
-import { SelectableValue, Threshold } from '@grafana/data';
+import { PanelEditorProps, SelectableValue, ThresholdsConfig } from '@grafana/data';
 
 export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOptions>> {
   onPercentOfChanged = ({ value }: SelectableValue<string>) => {
@@ -17,7 +17,7 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
     this.props.onOptionsChange({ ...this.props.options, decimal: value === undefined ? -1 : value });
   };
 
-  onThresholdsChanged = (newThresholds: Threshold[]) => {
+  onThresholdsChanged = (newThresholds: ThresholdsConfig) => {
     this.props.onOptionsChange({ ...this.props.options, thresholds: newThresholds });
   };
 
@@ -28,6 +28,10 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
   onPercentFontSizeChanged = ({ value }: SelectableValue<string>) => {
     this.props.onOptionsChange({ ...this.props.options, percentFontSize: value || '' });
   };
+
+  onMaxValueChanged = (e: ChangeEvent<HTMLInputElement>) => {
+    this.props.onOptionsChange({ ...this.props.options, maxValue: e.target.value || '' });
+  }
 
   render() {
     const { options, data } = this.props;
@@ -68,6 +72,16 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
             </div>
 
             <div className="gf-form">
+              <label className="gf-form-label width-9">Max value</label>
+              <div className="gf-form-select-wrapper" style={{ width: '100%' }}>
+                <Input
+                  value={options.maxValue}
+                  onChange={this.onMaxValueChanged}
+                />
+              </div>
+            </div>
+
+            <div className="gf-form">
               <label className="gf-form-label width-9">Decimals</label>
               <div className="gf-form-select-wrapper" style={{ width: '100%' }}>
                 <Select
@@ -102,7 +116,9 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
           </div>
         </PanelOptionsGroup>
 
-        <ThresholdsEditor thresholds={options.thresholds} onChange={this.onThresholdsChanged} />
+        <ThemeContext.Consumer>{theme =>
+          <ThresholdsEditor thresholds={options.thresholds} onChange={this.onThresholdsChanged} theme={theme} />}
+        </ThemeContext.Consumer>
       </PanelOptionsGrid>
     );
   }

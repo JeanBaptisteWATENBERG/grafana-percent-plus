@@ -1,8 +1,8 @@
-import React, { PureComponent, PropsWithChildren } from 'react';
-import { PanelProps, getColorFromHexRgbOrName } from '@grafana/ui';
+import React, { PropsWithChildren } from 'react';
+import { PanelProps, getColorFromHexRgbOrName } from '@grafana/data';
 import { PercentPanelOptions } from 'types';
 
-interface Props extends PanelProps<PercentPanelOptions> {}
+interface Props extends PanelProps<PercentPanelOptions> { }
 
 const BASE_FONT_SIZE = 38;
 
@@ -15,43 +15,57 @@ function SpanValue({ fontSizePercent, className, children }: PropsWithChildren<{
   );
 }
 
-export class PercentPanel extends PureComponent<Props> {
-  render() {
-    const { options, data } = this.props;
-    const percentOfSerie = data.series.find(serie => serie.fields.find(field => field.name === options.percentOf));
-    const percentOverSerie = data.series.find(serie => serie.fields.find(field => field.name === options.over));
+export const PercentPanel = (props: Props) => {
+  const { options, data } = props;
 
-    if (!percentOfSerie || !percentOverSerie) {
-      return <p>Selected series are not available</p>;
+  const panelRef = React.useCallback((panel: HTMLDivElement, color: string) => {
+    if (panel) {
+      const panelContainer = panel.closest<HTMLDivElement>('.panel-container');
+      if (panelContainer) {
+        panelContainer.style.background = color;
+      }
     }
+  }, []);
 
-    const percentOfField = percentOfSerie.fields.find(field => field.name === options.percentOf);
-    const percentOverField = percentOverSerie.fields.find(field => field.name === options.over);
+  const percentOfSerie = data.series.find(serie => serie.fields.find(field => field.name === options.percentOf));
+  const percentOverSerie = data.series.find(serie => serie.fields.find(field => field.name === options.over));
 
-    if (!percentOfField || !percentOverField) {
-      return <p>Selected fields are not available</p>;
-    }
-
-    const percentOfSum = percentOfField.values.toArray().reduce((sum, current) => sum + current, 0);
-    const percentOverSum = percentOverField.values.toArray().reduce((sum, current) => sum + current, 0);
-
-    const percent = Math.min((percentOfSum * 100) / percentOverSum, 100);
-
-    const applyableThreshold = [...options.thresholds]
-      .sort((thresholdA, thresholdB) => thresholdB.value - thresholdA.value)
-      .find(threshold => threshold.value <= percent) || { color: 'transparent' };
-
-    return (
-      <div className="singlestat-panel" style={{ background: getColorFromHexRgbOrName(applyableThreshold.color) }}>
-        <div className="singlestat-panel-value-container">
-          <SpanValue className="singlestat-panel-value" fontSizePercent={options.valueFontSize}>
-            {options.decimal !== -1 ? percent.toFixed(options.decimal) : percent}
-          </SpanValue>
-          <SpanValue className="singlestat-panel-postfix" fontSizePercent={options.percentFontSize}>
-            %
-          </SpanValue>
-        </div>
-      </div>
-    );
+  if (!percentOfSerie || !percentOverSerie) {
+    return <p>Selected series are not available</p>;
   }
-}
+
+  const percentOfField = percentOfSerie.fields.find(field => field.name === options.percentOf);
+  const percentOverField = percentOverSerie.fields.find(field => field.name === options.over);
+
+  if (!percentOfField || !percentOverField) {
+    return <p>Selected fields are not available</p>;
+  }
+
+  const percentOfSum = percentOfField.values.toArray().reduce((sum, current) => sum + current, 0);
+  const percentOverSum = percentOverField.values.toArray().reduce((sum, current) => sum + current, 0);
+
+  const maxValue = Number(options.maxValue);
+  const rawPercent = (percentOfSum * 100) / percentOverSum;
+  const percent = isNaN(maxValue) ? rawPercent : Math.min(rawPercent, maxValue);
+
+
+  const applyableThreshold = [...options.thresholds.steps]
+    .sort((thresholdA, thresholdB) => thresholdB.value - thresholdA.value)
+    .find(threshold => threshold.value <= percent) || { color: 'transparent' };
+
+  return (
+    <div
+      className="singlestat-panel" style={{ background: getColorFromHexRgbOrName(applyableThreshold.color) }}
+      ref={(panel: HTMLDivElement) => panelRef(panel, getColorFromHexRgbOrName(applyableThreshold.color))}>
+      <div className="singlestat-panel-value-container">
+        <SpanValue className="singlestat-panel-value" fontSizePercent={options.valueFontSize}>
+          {options.decimal !== -1 ? percent.toFixed(options.decimal) : percent}
+        </SpanValue>
+        <SpanValue className="singlestat-panel-postfix" fontSizePercent={options.percentFontSize}>
+          %
+          </SpanValue>
+      </div>
+    </div>
+  );
+
+};
