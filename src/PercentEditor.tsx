@@ -32,6 +32,14 @@ export class PercentEditor extends PureComponent<PanelEditorProps<PercentPanelOp
   render() {
     const { options, data } = this.props;
 
+    if (!data) {
+      return 'No data available, have you defined a query ?';
+    }
+
+    if (!data.series) {
+      return 'No time serie available, have you defined a time serie query ? Percent+ plugin requires 2 time series queries.';
+    }
+
     const fieldAliases: Array<SelectableValue<string>> = data.series
       .map(serie => {
         return serie.fields
