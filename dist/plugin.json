@@ -20,12 +20,12 @@
     "screenshots": [
       { "name": "Options", "path": "https://raw.githubusercontent.com/JeanBaptisteWATENBERG/grafana-percent-plus/master/docs/configure.png" }
     ],
-    "version": "1.0.6",
-    "updated": "2019-11-16"
+    "version": "1.2.0",
+    "updated": "2020-05-20"
   },
 
   "dependencies": {
-    "grafanaVersion": "6.3.x",
+    "grafanaVersion": "7.x.x",
     "plugins": []
   }
 }
